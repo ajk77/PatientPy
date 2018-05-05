@@ -1,6 +1,6 @@
 """
 create_feature_vectors.py
-version 1.0
+version 2.0
 package patientpy
 Created by AndrewJKing.com
 
@@ -9,10 +9,16 @@ This file loads stored patient data and constructs feature vectors to represent 
 ---DEPENDENCIES---
 Must run patient_pickler first to store data structures that are used here.
 ^ set pkl_dir to the same value as was used in patient_pickler.
-Must create a feature directory
+Must create a feature directory.
+^The following subdirectories must be created as well: 'root_data/','med_data/','procedure_data/','micro_data/','io_data/','demo_data/'
+Must create labeled_case_list file and linked participant_info files. See resource folder for examples. 
+
+---TODO---
+After connections to both NOC and MIMIC III are established (see patient_pickler TODO)
+[] Generalize the project to ensure it works when connected to either NOC or MIMIC. 
 """
 
-from patientpy_utils import load_list, load_info_from_pickle_file, load_case_day_mapping
+from patientpy_utils import load_list, load_info_from_pickle_file, load_case_day_mapping, delete_folder_contents
 from data_featurizer import *
 import pickle
 
@@ -46,13 +52,13 @@ def load_labeled_cases(labeled_case_file, participant_source_dir):
     return labeled_cases, labeled_days_dict, labeled_cut_times_dict
 
 
-def create_complete_feature_files_main(feature_dir, labeled_cases_data_3, case_day_data_3, root_mapping_data_9, med_mapping_data_6, reset_case_order=True):
+def create_complete_feature_files_main(feature_dir, pickle_dir, labeled_cases_data_3, case_day_data_3, root_mapping_data_9, med_mapping_data_6, reset_case_order=True):
     """
     Creates the feature vector files for each sample
     """
     # ## expand parameters
     labeled_cases, labeled_days_dict, labeled_cut_times_dict = labeled_cases_data_3
-    patient_order, patient_days, patient_cuttimes = case_day_data_3
+    patient_order, patient_days, patient_cut_times = case_day_data_3
     mtr, rtm, groups, lab_group_order, rtn, rtt, rtdt, drm, root_order = root_mapping_data_9
     med_order, mtt, procedure_order, micro_order, io_order, demo_order = med_mapping_data_6
 
@@ -607,36 +613,31 @@ def create_complete_feature_files_main(feature_dir, labeled_cases_data_3, case_d
     return
 
 
-if name == '__main__':
+if __name__ == '__main__':
 
     # where the data was stored from patient_pickler.py
-    root_dir = 'D:/LEMR_archives/4_machine_learning/'
-    pkl_dir = 'D:/LEMR_archives/4_machine_learning/all_data_pickle_files/'
-    case_day_filename = 'case_day_mapping-01Apr2018.txt'
+    root_dir = '//modeling_folder/'
+    pkl_dir = '//modeling_folder/all_data_pickle_files/'
+    case_day_filename = 'case_day_mapping-01Jan2018.txt'  # expample provided in /resources/load_case_day_mapping-file/
     
     # ## feature directories. Each of the cases below will populate the feature directories for a different set of labeled cases
     # The loaded file must be generated. See resource folder for examples. 
-    cases = ['first_four', 'training', 'evaluation']
-    case = cases[0]
-    if case == 'first_four':  # the first four 'burn in' cases
-        feature_dir = 'D:/LEMR_archives/4_machine_learning/complete_feature_files_first_four_cases/'
-        labeled_cases_data = load_labeled_cases('D:/LEMR_archives/4_machine_learning/labeled_first_four_case_list.txt', 'D:/LEMR_archives/2_labeling_study/participant_info/')
-    elif case == 'training':  # the training cases
-        feature_dir = 'D:/LEMR_archives/4_machine_learning/complete_feature_files/'
-        labeled_cases_data = load_labeled_cases('D:/LEMR_archives/4_machine_learning/labeled_case_list.txt', 'D:/LEMR_archives/2_labeling_study/participant_info/') 
-    elif case == 'evaluation':  # the evaluation cases
-        feature_dir = 'D:/LEMR_archives/4_machine_learning/complete_feature_files_evaluation_cases/'
-        labeled_cases_data = load_labeled_cases('D:/LEMR_archives/4_machine_learning/evaluation_study_case_list.txt', 'D:/LEMR_archives/3_evaluation_study/participant_info/') 
+    feature_dir = root_dir + 'complete_feature_files_demo/'
+    labeled_cases_data = load_labeled_cases(feature_dir + 'demo_case_list.txt', '//labeling_study/participant_info/')  
+    # ^ examples of necessary files provided in /patientpy/resources/load_labled_cases-param1 & load_labeled_cases-participant_files
 
     # ## load patient case order, patient days, and patient day cut times
-    patient_order, patient_days, patient_cuttimes = load_case_day_mapping(root_dir+case_day_filename)
+    case_day_data = load_case_day_mapping(root_dir+case_day_filename) 
+    # ^ [patient_order, patient_days, patient_cuttimes]
 
     # ## load lab and vital (root) mapping information
-    mtr, rtm, groups, lab_group_order, rtn, rtt, rtdt, drm, root_order = load_info_from_pickle_file(pkl_dir+'root_info.pickle')
-    # ^mtr=mars2root, rtm=root2mars, rtn=root2name, rtt=root2table, rtdt=root2datatype drm=discrete result mapping
+    root_mapping_data = load_info_from_pickle_file(pkl_dir+'root_info.pickle')
+    # returns mtr, rtm, groups, lab_group_order, rtn, rtt, rtdt, drm, root_order
+    # ^[mtr=mars2root, rtm=root2mars, rtn=root2name, rtt=root2table, rtdt=root2datatype drm=discrete result mapping]
 
     # ## load med, procedure, micro, intake and output, and dempgraphic mapping information
     med_order, mtt, procedure_order, micro_order, io_order, demo_order = load_info_from_pickle_file(pkl_dir+'other_info.pickle')
+    # returns med_order, mtt, procedure_order, micro_order, io_order, demo_order
     # ^mtt=med2table
 
     create_complete_feature_files_main(feature_dir, labeled_cases_data, case_day_data, root_mapping_data, med_mapping_data, True)

@@ -23,7 +23,9 @@ A mapping table that maps discrete clinical event results to boolean values.
 
 ### Prerequisites
 
-Standard python packages are used. (Later versions may add peewee for database connectivity).
+patientpy_feature_selection (https://github.com/ajk77/patientpy_feature_selection)<br />
+regressive_imputer (https://github.com/ajk77/regressive_imputer)<br />
+(Later versions may add peewee for database connectivity).
 
 ### Installing
 
@@ -39,7 +41,9 @@ Labeled case list file lists the exact cases of interest. Participant info files
 ## Deployment
 
 Run patient_pickler.py once.<br />
-Run create_feature_vectors.py once for each desired patient set, updating feature_dir and load_labeled_cases() parameters each time. 
+Run create_feature_vectors.py once for each desired patient set, updating feature_dir and load_labeled_cases() parameters each time. <br />
+Run assemble_feature_matrix.py once for each directory filled by create_feature_vecotrs.py.<br />
+Run instantiate_experiment.py; this can be run multiple times on each assembled feature matrix. It is where set folds, imputation, and feature selection occur. 
 
 ## Versioning
 
@@ -53,8 +57,9 @@ Gregory F Cooper - Doctoral Advisor
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
 ## Acknowledgments
 
-* Gilles Clermont and Milos Hauskrecht 
+* Gilles Clermont
+* Milos Hauskrecht 

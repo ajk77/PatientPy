@@ -1,6 +1,6 @@
 """
 patientpy_utils.py
-version 1.0
+version 2.0
 package patientpy
 Created by AndrewJKing.com
 
