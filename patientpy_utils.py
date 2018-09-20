@@ -99,3 +99,51 @@ def load_case_day_mapping(case_day_file):
             patient_days[split_line[0]].append(split_line[1])
             patient_cuttimes[split_line[0]].append(float(split_line[2]))
     return [patient_order, patient_days, patient_cuttimes]
+
+
+def determine_case_times(case_day_mapping_path):
+    """
+    This function determine the number of days and cuttimes for each case day.
+    """
+
+    import datetime
+    from random import randint
+
+    out_file = open(case_day_mapping_path, 'w')
+    out_file.write('#PatientVisitId,los,cutoff\n')
+    visited_case_ids = []
+    results = a_ICUpatients.objects.using('remote').all()  # Database connection to ICUpatients table
+    for result in results:
+        if result.patientvisitid not in visited_case_ids:
+            visited_case_ids.append(result.patientvisitid)
+    for case_id in visited_case_ids:
+        results = a_ICUpatients.objects.using('remote').filter(patientvisitid=case_id)  # Database connection to ICUpatients table
+        t_icu_admit = 0
+        t_icu_discharge = 0
+        first = True
+        current_admits_dischs = []
+        # find earliest icu admission
+        for result in results:
+            curr_admit = (time.mktime(result.ICUadmit.timetuple()) - 18000)  # * 1000
+            curr_disch = (time.mktime(result.ICUdischarge.timetuple()) - 18000)  # * 1000
+            current_admits_dischs.append([curr_admit, curr_disch])
+            if first:
+                t_icu_admit = curr_admit
+                t_icu_discharge = curr_disch
+                first = False
+            else:
+                t_icu_admit = min(t_icu_admit, curr_admit)
+                t_icu_discharge = max(t_icu_discharge, curr_disch)
+                # it is possible that some of the cut times occur in between ICU admissions.
+
+        day_diff = (t_icu_discharge - t_icu_admit) // 86400
+        midnight_admit = (t_icu_admit // 86400) * 86400
+        eight_am_admit = midnight_admit + 28800
+        for los in range(int(day_diff+1)):
+            current_day_eight_am = eight_am_admit + (86400 * los)
+            for admission in current_admits_dischs:
+                if (admission[0] - 43200) < current_day_eight_am < (admission[1] + 43200):
+                    out_file.write(str(case_id)+','+str(los)+','+str(current_day_eight_am)+'\n')
+                    break
+    out_file.close()
+    return
