@@ -1,4 +1,4 @@
-# patientpy
+# PatientPy
 
 Patient state construction from clinical databases for machine learning.
 
@@ -23,8 +23,8 @@ A mapping table that maps discrete clinical event results to boolean values.
 
 ### Prerequisites
 
-patientpy_feature_selection (https://github.com/ajk77/patientpy_feature_selection)<br />
-regressive_imputer (https://github.com/ajk77/regressive_imputer)<br />
+PatientPyFeatureSelection (https://github.com/ajk77/PatientPyFeatureSelection)<br />
+RegressiveImputer (https://github.com/ajk77/RegressiveImputer)<br />
 (Later versions may add peewee for database connectivity).
 
 ### Installing
@@ -43,11 +43,11 @@ Labeled case list file lists the exact cases of interest. Participant info files
 Run patient_pickler.py once.<br />
 Run create_feature_vectors.py once for each desired patient set, updating feature_dir and load_labeled_cases() parameters each time. <br />
 Run assemble_feature_matrix.py once for each directory filled by create_feature_vecotrs.py.<br />
-Run instantiate_experiment.py; this can be run multiple times on each assembled feature matrix. It is where set folds, imputation, and feature selection occur. 
+Run InstantiateExperimentDriver.py; this can be run multiple times on each assembled feature matrix. It is where set folds, imputation, feature selection, and machine learning occur. 
 
 ## Versioning
 
-Version 1.0. For the versions available, see https://github.com/ajk77/patientpy
+Version 2.0. For the versions available, see https://github.com/ajk77/patientpy
 
 ## Authors
 
@@ -57,9 +57,21 @@ Gregory F Cooper - Doctoral Advisor
 
 ## License
 
-This project is licensed under the MIT License
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ## Acknowledgments
 
+* Harry Hochheiser
 * Gilles Clermont
 * Milos Hauskrecht 

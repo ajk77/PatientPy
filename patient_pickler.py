@@ -24,6 +24,22 @@ The database table connected to in the determine_cases_days_and_times() method s
 ---TODO---
 [] Setup database connections to NOC
 [] Setup database connections to MIMIC III
+
+---LICENSE---
+This file is part of PatientPy
+
+PatientPy is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or 
+any later version.
+
+PatientPy is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 """
 from patientpy_utils import load_info_from_pickle_file, load_case_day_mapping, determine_case_times
 import pickle

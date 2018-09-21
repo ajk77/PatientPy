@@ -16,6 +16,22 @@ Must create labeled_case_list file and linked participant_info files. See resour
 ---TODO---
 After connections to both NOC and MIMIC III are established (see patient_pickler TODO)
 [] Generalize the project to ensure it works when connected to either NOC or MIMIC. 
+
+---LICENSE---
+This file is part of PatientPy
+
+PatientPy is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or 
+any later version.
+
+PatientPy is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from patientpy_utils import load_list, load_info_from_pickle_file, load_case_day_mapping, delete_folder_contents
