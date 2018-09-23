@@ -51,8 +51,8 @@ Version 2.0. For the versions available, see https://github.com/ajk77/patientpy
 
 ## Authors
 
-Andrew J King - Doctoral Candidate<br />
-Shyam Visweswaran - PI<br />
+Andrew J King - Doctoral Candidate (at time of creation)<br />
+Shyam Visweswaran - Principal Investigator<br />
 Gregory F Cooper - Doctoral Advisor 
 
 ## License
