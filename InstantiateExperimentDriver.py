@@ -25,10 +25,8 @@ Must create a feature directory.
 ^The following subdirectories must be created as well: 'root_data/','med_data/','procedure_data/','micro_data/','io_data/','demo_data/'
 Must create labeled_case_list file and linked participant_info files. See resource folder for examples. 
 
-    This file is part of Foobar.
-
 ---LICENSE---
-This file is part of PatientPy
+This file is part of PatientPy.
 
 PatientPy is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
