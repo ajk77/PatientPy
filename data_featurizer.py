@@ -1,7 +1,7 @@
 """
 data_featurizer.py
 version 3.0
-package PatientPy
+package github.com/ajk77/PatientPy
 Created by AndrewJKing.com
 
 This is a feature construction file.
