@@ -1,7 +1,7 @@
 """
 assemble_feature_matrix.py
-version 2.0
-package patientpy
+version 3.0
+package github.com/ajk77/PatientPy
 Created by AndrewJKing.com
 
 This file assembles the features into a feature matrix based on the input parameters. 
@@ -15,7 +15,6 @@ Feature columns to match -> if tying to match the feature columns of a previousl
 [Notes]
 [1] for each feature type NAME -> a folder NAME_feature_files and a file NAME_feature_columns where the rows in the file correspond to the columns in each of the feature files. Look at example in resources
 [2] for each additional feature NAME -> a feature file called NAME_features and a file called NAME_feature_columns. The same correspondence as Note 1. 
-
 
 ---DEPENDENCIES---
 Must run create_feature_vectors first.
@@ -36,7 +35,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
+along with PatientPy.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from patientpy_utils import load_list, load_file_list
@@ -136,6 +135,7 @@ def assemble_feature_matrix(feature_directory, output_filename, feature_types_to
 
 if __name__ =='__main__':
 
+    # where the data was stored from create_feature_vectors.py
     feature_dir = '//modeling_folder/complete_feature_files_demo/'
     output_filename = '//modeling_folder/feature_matrix_storage/full_demo'
     add_feat = []  # use to add any other feature types. Files must be placed in feature_dir

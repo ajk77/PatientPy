@@ -47,7 +47,7 @@ Run InstantiateExperimentDriver.py; this can be run multiple times on each assem
 
 ## Versioning
 
-Version 2.0. For the versions available, see https://github.com/ajk77/patientpy
+Version 3.0. For the versions available, see https://github.com/ajk77/patientpy
 
 ## Authors
 

@@ -1,10 +1,10 @@
 """
 patientpy_utils.py
-version 2.0
-package patientpy
+version 3.0
+package github.com/ajk77/PatientPy
 Created by AndrewJKing.com
 
-This file contains utility functions for the patientpy package.
+This file contains utility functions for the PatientPy package.
 
 ---LICENSE---
 This file is part of PatientPy
@@ -20,7 +20,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
+along with PatientPy.  If not, see <https://www.gnu.org/licenses/>.
 """
 import pickle
 import os

@@ -1,6 +1,6 @@
 """
 patient_pickler.py
-version 2.0
+version 3.0
 package patientpy
 Created by AndrewJKing.com
 
@@ -39,7 +39,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
+along with PatientPy.  If not, see <https://www.gnu.org/licenses/>.
 """
 from patientpy_utils import load_info_from_pickle_file, load_case_day_mapping, determine_case_times
 import pickle

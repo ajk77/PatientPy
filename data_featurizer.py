@@ -1,10 +1,10 @@
 """
 data_featurizer.py
-version 2.0
-package patientpy
+version 3.0
+package PatientPy
 Created by AndrewJKing.com
 
-This file contains function that calculate the different features.
+This is a feature construction file.
 Input is typically, data -> [time, value), (time, value), ...] sorted by time.
 
 ---LICENSE---
@@ -21,7 +21,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
+along with PatientPy.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from math import log10

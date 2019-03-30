@@ -1,13 +1,13 @@
 """
 create_feature_vectors.py
-version 2.0
-package patientpy
+version 3.0
+package github.com/ajk77/PatientPy
 Created by AndrewJKing.com
 
 This file loads stored patient data and constructs feature vectors to represent the patient state. 
 
 ---DEPENDENCIES---
-Must run patient_pickler first to store data structures that are used here.
+Must run patient_pickler.py first to store data structures that are used here.
 ^ set pkl_dir to the same value as was used in patient_pickler.
 Must create a feature directory.
 ^The following subdirectories must be created as well: 'root_data/','med_data/','procedure_data/','micro_data/','io_data/','demo_data/'
@@ -31,7 +31,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <https://www.gnu.org/licenses/>.
+along with PatientPy.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 from patientpy_utils import load_list, load_info_from_pickle_file, load_case_day_mapping, delete_folder_contents
