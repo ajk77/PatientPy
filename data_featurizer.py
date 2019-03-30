@@ -2,7 +2,7 @@
 data_featurizer.py
 version 3.0
 package github.com/ajk77/PatientPy
-Created by AndrewJKing.com
+Created by AndrewJKing.com|@andrewsjourney
 
 This is a feature construction file.
 Input is typically, data -> [time, value), (time, value), ...] sorted by time.

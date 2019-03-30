@@ -2,7 +2,7 @@
 create_feature_vectors.py
 version 3.0
 package github.com/ajk77/PatientPy
-Created by AndrewJKing.com
+Created by AndrewJKing.com|@andrewsjourney
 
 This file loads stored patient data and constructs feature vectors to represent the patient state. 
 

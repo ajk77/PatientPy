@@ -2,7 +2,7 @@
 patient_pickler.py
 version 3.0
 package github.com/ajk77/PatientPy
-Created by AndrewJKing.com
+Created by AndrewJKing.com|@andrewsjourney
 
 This file uses database connections to query and store patient data. 
 

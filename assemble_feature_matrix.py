@@ -2,7 +2,7 @@
 assemble_feature_matrix.py
 version 3.0
 package github.com/ajk77/PatientPy
-Created by AndrewJKing.com
+Created by AndrewJKing.com|@andrewsjourney
 
 This file assembles the features into a feature matrix based on the input parameters. 
 Input parameters include:

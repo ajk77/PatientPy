@@ -2,7 +2,7 @@
 InstantiateExperimentDriver.py 
 version 3.0
 package github.com/ajk77/PatientPy
-Created by AndrewJKing.com
+Created by AndrewJKing.com|@andrewsjourney
 
 This file instantiates a patientpy feature vector based on the input parameters. 
 Input parameters include:
