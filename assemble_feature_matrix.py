@@ -71,7 +71,7 @@ def assemble_feature_matrix(feature_directory, output_filename, feature_types_to
         all_names = None
         for idx2, filename in enumerate(file_list):
             curr_data = np.genfromtxt(files_dir + filename, delimiter=',', missing_values='')
-            curr_names = np.asarray([x + '_' + filename[:-4] for x in var_names], dtype='string')
+            curr_names = np.asarray([x + '_' + filename[:-4] for x in var_names], dtype='U')
             all_data, all_names = concat(idx2, all_data, all_names, curr_data, curr_names)
         return [all_data, all_names]
 
@@ -79,7 +79,7 @@ def assemble_feature_matrix(feature_directory, output_filename, feature_types_to
     full_data = 0
     full_names = 0
     for idx, curr_type in enumerate(feature_types_to_include):
-        print '======' + curr_type + '======'
+        print('======' + curr_type + '======')
 
         # ## load current type feature name files
         training_file_dir = feature_directory + curr_type + '_feature_files/'
@@ -87,27 +87,27 @@ def assemble_feature_matrix(feature_directory, output_filename, feature_types_to
 
         # ## load current type data
         loaded_data, loaded_names = load_dir(training_file_dir, training_var_names_file)
-        print 'loaded: ', loaded_data.shape, loaded_names.shape
+        print('loaded: ', loaded_data.shape, loaded_names.shape)
 
         # concatenate loaded data to full data
         full_data, full_names = concat(idx, full_data, full_names, loaded_data, loaded_names)
 
         # print shape after addition of current type
-        print 'concatenated: ', full_data.shape, full_names.shape
+        print('concatenated: ', full_data.shape, full_names.shape)
 
 
     # ## additing additional types of features
     if len(additional_features):
         for idx, curr_file in enumerate(additional_features):
-            print '------' + curr_file + '------'
+            print('------' + curr_file + '------')
             var_names = load_list(feature_directory + curr_file + '_columns.txt')
             curr_data = np.genfromtxt(feature_directory + curr_file + '.txt', delimiter=',', missing_values='')
             curr_data = curr_data.reshape(curr_data.shape[0], 1)
-            curr_names = np.asarray([x + '_' + curr_file for x in var_names], dtype='string')
-            print curr_data.shape, curr_names.shape
+            curr_names = np.asarray([x + '_' + curr_file for x in var_names], dtype='U')
+            print(curr_data.shape, curr_names.shape)
             full_data, full_names = concat(idx+1, full_data, full_names, curr_data, curr_names)
-            print 'concatenated: ', full_data.shape, full_names.shape
-        print 'additional featueres added: ', full_data.shape, full_names.shape
+            print('concatenated: ', full_data.shape, full_names.shape)
+        print('additional featueres added: ', full_data.shape, full_names.shape)
 
     # ## if insureing the feature columns are the same as an existing feature matix
     if len(feature_columns_to_match):
@@ -118,10 +118,10 @@ def assemble_feature_matrix(feature_directory, output_filename, feature_types_to
                 new_indicies.append(column_index_result[1][0])
         full_data = full_data[:, column_index_result]
         full_names = full_names[:, column_index_result]
-        print 'columns are matched: ', full_data.shape, full_names.shape
+        print('columns are matched: ', full_data.shape, full_names.shape)
 
     # print shape after num training columns are removed
-    print 'full: ', full_data.shape, full_names.shape
+    print('full: ', full_data.shape, full_names.shape)
 
     # ## reshape name dimensions
     full_names = full_names.reshape((full_names.shape[0], 1))
