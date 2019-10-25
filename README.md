@@ -51,9 +51,13 @@ Version 3.0. For the versions available, see https://github.com/ajk77/patientpy
 
 ## Authors
 
-Andrew J King - Doctoral Candidate (at time of creation)<br />
-Shyam Visweswaran - Principal Investigator<br />
-Gregory F Cooper - Doctoral Advisor 
+* Andrew J King - Doctoral Candidate (at time of creation)
+	* Website (https://www.andrewjking.com/)
+	* Twitter (https://twitter.com/andrewsjourney)
+* Shyam Visweswaran - Principal Investigator
+	* Website (http://www.thevislab.com/)
+	* Twitter (https://twitter.com/Shyam_Vis)
+* Gregory F Cooper - Doctoral Advisor
 
 ## License
 
@@ -73,5 +77,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ## Acknowledgments
 
 * Harry Hochheiser
+	* Twitter (https://twitter.com/hshoch)
 * Gilles Clermont
 * Milos Hauskrecht 
